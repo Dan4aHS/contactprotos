@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "./contacts.v1;contactsv1";
+
+service ContactsService {
+  rpc Create (CreateRequest) returns (CreateResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc Delete (DeleteRequest) returns (DeleteResponse);
+  rpc GetByID (GetByIDRequest) returns (GetByIDResponse);
+  rpc List (ListRequest) returns (ListResponse);
+}
+
+message CreateRequest {
+  string firstName = 1;
+  string secondName = 2;
+  string middleName = 3;
+  string phoneNumber = 4;
+}
+
+message CreateResponse {
+  string id = 1;
+}
+
+message UpdateRequest {
+  Contact contact = 1;
+}
+
+message UpdateResponse {
+  string id = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  string id = 1;
+}
+
+message GetByIDRequest {
+  string id = 1;
+}
+
+message GetByIDResponse {
+  Contact contact = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+  repeated Contact contacts = 1;
+}
+
+message Contact {
+  string id = 1;
+  string firstName = 2;
+  string secondName = 3;
+  string middleName = 4;
+  string phoneNumber = 5;
+}
